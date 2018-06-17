@@ -4,8 +4,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { HeroService }  from './hero.service';
-import { Hero } from './hero';
+import { HeroService }  from '../hero.service';
+import { Hero } from '../hero';
 
 @Component({
   selector: 'app-hero-list',

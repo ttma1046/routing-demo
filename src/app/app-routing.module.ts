@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { CrisisListComponent } from './crisis-list.component';
 import { PageNotFoundComponent } from './not-found.component';
 
+import { ComposeMessageComponent } from './compose-message.component';
+
 const appRoutes: Routes = [
-    { path: 'crisis-center', component: CrisisListComponent },
     { path: '', redirectTo: '/heroes', pathMatch: 'full' },
-    { path: '**', component: PageNotFoundComponent }
+    { path: '**', component: PageNotFoundComponent },
+    {
+        path: 'compose',
+        component: ComposeMessageComponent,
+        outlet: 'popup'
+    },
 ];
 
 @NgModule({
@@ -17,6 +21,6 @@ const appRoutes: Routes = [
             { enableTracing: true } // <-- debugging purposes only
         )
     ],
-    exports: [ RouterModule ]
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

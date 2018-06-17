@@ -1,25 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }    from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HeroesModule } from './heroes/heroes.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CrisisModule } from './crisis-center/crisis.module';
 
 import { AppComponent } from './app.component';
 
-import { CrisisListComponent } from './crisis-list.component';
-
 import { PageNotFoundComponent } from './not-found.component';
+import { ComposeMessageComponent } from './compose-message.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        CrisisListComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        ComposeMessageComponent
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         HeroesModule,
+        CrisisModule,
         BrowserAnimationsModule,
         AppRoutingModule
     ],

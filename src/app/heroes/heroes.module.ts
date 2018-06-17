@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { HeroRoutingModule } from './heroes-routing.module';
 
-import { HeroListComponent } from './hero-list.component';
-import { HeroDetailComponent } from './hero-detail.component';
+import { HeroListComponent } from './hero-list/hero-list.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 import { HeroService } from './hero.service';
 
