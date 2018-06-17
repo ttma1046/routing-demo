@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HeroesModule } from './heroes/heroes.module';
-import { CrisisModule } from './crisis-center/crisis.module';
-import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 
@@ -23,8 +22,6 @@ import { ComposeMessageComponent } from './compose-message.component';
         BrowserModule,
         FormsModule,
         HeroesModule,
-        CrisisModule,
-        AdminModule,
         AuthModule,
         BrowserAnimationsModule,
         AppRoutingModule
@@ -32,4 +29,9 @@ import { ComposeMessageComponent } from './compose-message.component';
     providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    // Diagnostic only: inspect router configuration
+    constructor(router: Router) {
+        console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+    }
+}

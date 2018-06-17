@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Crisis } from './crisis';
@@ -11,21 +11,23 @@ import { CRISES } from './mock-crises';
     providedIn: 'root',
 })
 export class CrisisService {
+ static nextCrisisId = 100;
+  private crises$: BehaviorSubject<Crisis[]> = new BehaviorSubject<Crisis[]>(CRISES);
 
-    constructor(
-        // private messageService: MessageService
-        ) { }
+  getCrises() { return this.crises$; }
 
-    getCrises(): Observable<Crisis[]> {
-        // TODO: send the message _after_ fetching the heroes
-        // this.messageService.add('HeroService: fetched heroes');
-        return of(CRISES);
+  getCrisis(id: number | string) {
+    return this.getCrises().pipe(
+      map(crises => crises.find(crisis => crisis.id === +id))
+    );
+  }
+
+  addCrisis(name: string) {
+    name = name.trim();
+    if (name) {
+      let crisis = new Crisis(CrisisService.nextCrisisId++, name);
+      CRISES.push(crisis);
+      this.crises$.next(CRISES);
     }
-
-    getCrisis(id: number | string) {
-        return this.getCrises().pipe(
-            // (+) before `id` turns the string into a number
-            map(crises => crises.find(crisis => crisis.id === +id))
-        );
-    }
+  }
 }
